@@ -1,0 +1,29 @@
+﻿
+
+1. ASP.Net Core Web App (Model-View-Controller) desenenine sahip proje Core versiyonu 3.1 yada .NET 5.0 olarak açabilirsiniz.
+2. Models => Entities => klasörü açılır
+3. Models => Entities => Abstract klasörü açılır.
+4. Models => Entities => Abstract => BaseEntity.cs sınıfı açılır. Varlıkların ortak özellikleri yazılır.
+5. Models => Entities => Concrete klasörü açılır.
+6. Models => Entities => Concrete => Category.cs sınıfı açılır.
+7. Infrastructure klasörü açılır.
+8. Infrastructure => EntityTypeConfiguration klasörü açılır.
+9. Infrastructure => EntityTypeConfiguration => Abstract klasörü açılır.
+10. Infrastructure => EntityTypeConfiguration => Abstract => BaseMap.cs sınıfı açılır.
+Not: IEntityTypeConfiguration.cs arayüzünü bize temin edecek yapı EF Core'dur. EFCore'u bu adımda yükleyebiliriz. Lakin Ef Core, bu projede kullanacağımız veri tabanı paketi içerisinde de bulunmaktadır. Bu yüzde birden fazla paket indirmemek için biz direk çalışacağımız veri tabanının paketini indireceğiz. Böylelikle içerisinde EF Core'da gelecektir. Microsoft.EntityFrameworkCore.SqlServer 5.0.17 versiyonu aldık. Bu projede SQL Server ile  çalışacağımızdan bu paketi yükledik. Bu paket ile Ef Core'da geldi. Artık Ef Core kullanabiliriz.
+11. Infrastructe => EntityTypeConfiguration => Concrete klasörü açılır.
+12. Infrastructe => EntityTypeConfiguration => Concrete => CategoryMap.cs sınıfı açılır.
+13. Infrastructe => EntityTypeConfiguration => Context klasörü açılır.
+14. Infrastructe => EntityTypeConfiguration => Context  => AppDbContext.cs sınıfı açılır.
+15. Startup.cs => Configure methodunun içerisine uygulama içerisinde bağımlılığa neden olacak olan AppDbContext.cs sınıfı register edilir. Register işlemi için gömülü bir method'tan faydalandık.
+16. appsetting.json => Connection String eklenir.
+17. Microsoft.EntityFrameworkCore.Tools 5.0.17 verisyonlu paket indirilir. Bu paket migration esnasında yazılacak terminal kodlarını bize temin etti.
+18. Tools => Nuget Package Manager => Package Manager Console açılr.
+19. Tools => Nuget Package Manager => Package Manager Console => add-migration initialcreate not: burada bizden migration ismi beklemektedir (initialcreate)
+20. Tools => Nuget Package Manager => Package Manager Console => update-database
+21. Infrastructe => Repositories klasörü açılır.
+22. Infrastructe => Repositories  => Interfaces klasörü açılır.
+23. Infrastructe => Repositories  => Interfaces => ICategoryRepository.cs açılır.
+24. Infrastructe => Repositories  => Concrete klasörü açılır.
+25. Infrastructe => Repositories  => Concrete => CategoryRepository.cs sınıfı açılır.
+26. Startup.cs  => Configure() => AddScoped<ICategoryRepository, CategoryRepository>(); 
